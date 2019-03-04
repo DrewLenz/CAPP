@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "babel-node": "babel-node --presets=env",
-        "dev": "nodemon --exec npm run babel-node -- ./app/index.js",
+        "dev": "nodemon --exec yarn run babel-node -- ./app/index.js",
         "build": "babel app -d dist",
         "start": "./dist/index.js",
         "lint": "./node_modules/.bin/eslint app/**"
