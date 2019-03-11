@@ -1,8 +1,12 @@
+// These are different endpoints that we can call
 // import User from '../models/user';
 import UserService from '../libs/UserService';
 import isLoggedIn from '../utils/authentication';
 module.exports = (app, passport) => {
 
+    // Get is from URL to render a new page
+    // Knows to render from views directory
+    // On index page, there is no data being sent
     app.get(`/`, isLoggedIn, async (req, res) => {
         res.render(`index.ejs`);
     });
@@ -11,6 +15,7 @@ module.exports = (app, passport) => {
         res.render(`login.ejs`, {message: req.flash(`loginMessage`)});
     });
 
+    // Comes from forms 99% of the time, when setting data and posting to database
     app.post(`/login`, passport.authenticate(`local`, {
         successRedirect: `/`,
         failureRedirect: `/login`,

@@ -14,12 +14,12 @@ module.exports = (passport) => {
         });
     });
 
-    passport.use(new LocalStrategy.Strategy({
+    passport.use(new LocalStrategy.Strategy({ // LocalStrategy just means email/password
         usernameField: `email`,
         passwordField: `password`,
         passReqToCallback: true
     }, (req, email, password, done) => {
-        User.findOne({email}).select(`+password`).exec((err, user) => {
+        User.findOne({email}).select(`+password`).exec((err, user) => { // Mongoose model which will have to be 
             if (err) {
                 return done(err);
             }
