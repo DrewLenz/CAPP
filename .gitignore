@@ -2,3 +2,11 @@
 /dist
 .env
 .package-lock.json
+
+\.vs/CAPP/v15/\.suo
+
+\.vs/ProjectSettings\.json
+
+\.vs/slnx\.sqlite
+
+\.vs/VSWorkspaceState\.json
