@@ -12,7 +12,7 @@ export default class UserService {
     findByContactInfo(){
         return new Promise( (resolve, reject) => {
             console.log('got here');
-            applicant_contact_info.findAll()
+            applicant_contact_info.findAll() 
             .then(data => {
                 if(data) {
                     resolve(data);

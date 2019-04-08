@@ -3,7 +3,7 @@ module.exports = (sequelize, type) => {
         `applicant_school_info`, {
 
             uid: {
-                   type: type.INTEGER,
+                   type: type.STRING,
                     primaryKey: true,
                     autoIncrement: true
             },

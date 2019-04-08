@@ -25,8 +25,11 @@
         <'zipcode'></div>
     <% data.forEach(function(item){ %>
         <div>
-        <%= item.first_name %>
-        <%= item.last_name%>&#44;
+            <div>
+                <p><b>Name:</b> <%= item.first_name %> <%= item.last_name%>&#44;</p>
+            </div>
+        
+        
         <%= item.email %>&#44;
         <%= item.phone_number %>&#44;
         <%= item.street_address_line1 %>&#44;
