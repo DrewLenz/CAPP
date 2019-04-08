@@ -1,0 +1,133 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./partials/header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>CAPP</h1>
+        <p>Welcome to CAPP</p>
+    </div>
+</main>
+<form class="" action="/login" method="POST">
+    <h3>Applicant Contact Info</h3>
+    <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input type="text" class = "form-control" name = "first_name">
+    </div>
+    <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input type="text" class = "form-control" name = "last_name">
+    </div>
+    <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+    <div class="form-group">
+        <label for="phone_number">Phone Number</label>
+        <input type="text" class = "form-control" name = "phone_number">
+    </div>
+    <div class="form-group">
+        <label for="street_address_line1">Street Address (Line 1)</label>
+        <input type="text" class = "form-control" name = "street_address_line1">
+    </div>
+    <div class="form-group">
+        <label for="street_address_line2">Street Address (Line 2)</label>
+        <input type="text" class = "form-control" name = "street_address_line2">
+    </div>   
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class = "form-control" name = "city">
+    </div>
+    <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" class = "form-control" name = "state">
+    </div>
+    <div class="form-group">
+        <label for="zipcode">ZIP Code</label>
+        <input type="text" class = "form-control" name = "state">
+    </div>
+
+    <h3>Applicant School Info</h3>
+    <div class="form-group">
+        <label for="school_name">School Name</label>
+        <input type="text" class = "form-control" name = "school_name">
+    </div>
+    <div class="form-group">
+        <label for="school_city">School Location (City)</label>
+        <input type="text" class = "form-control" name = "school_city">
+    </div>
+    <div class="form-group">
+        <label for="school_state">School Location (State)</label>
+        <input type="text" class = "form-control" name = "school_state">
+    </div>
+    <div class="form-group">
+        <label for="major">Major</label>
+        <input type="text" class = "form-control" name = "major">
+    </div>
+    <div class="form-group">
+        <label for="minor">Minor (If Applicable)</label>
+        <input type="text" class = "form-control" name = "minor">
+    </div>
+    <div class="form-group">
+        <label for="gpa">GPA</label>
+        <input type="text" class = "form-control" name = "gpa">
+    </div>
+    <div class="form-group">
+        <label for="gpa_scale">GPA Scale</label>
+        <input type="text" class = "form-control" name = "gpa_scale">
+    </div>
+    <div class="form-group">
+        <label for="grad_semester">Graduating Semester</label>
+        <input type="text" class = "form-control" name = "grad_semester">
+    </div>
+    <div class="form-group">
+        <label for="grad_year">Graduating Year</label>
+        <input type="text" class = "form-control" name = "grad_year">
+    </div>
+
+    <h3>Applicant Skills</h3>
+    <p>Please enter your top 3 skills</p>
+    <div class="form-group">
+        <label for="top_skill1">Top Skill 1</label>
+        <input type="text" class = "form-control" name = "top_skill1">
+    </div>
+    <div class="form-group">
+        <label for="top_skill2">Top Skill 2</label>
+        <input type="text" class = "form-control" name = "top_skill2">
+    </div>
+    <div class="form-group">
+        <label for="top_skill3">Top Skill 3</label>
+        <input type="text" class = "form-control" name = "top_skill3">
+    </div>
+    <div class="form-group">
+        <label for="other_skills">Enter any addititional skills below</label>
+        <textarea class = "form-control"  rows="4" name = "other_skills"></textarea>
+    </div>
+
+    <h3>Applicant Pitch</h3>
+    <p>
+        The pitch is where you can highlight a little about your 
+        experience, interests, or anything else you think an employer
+        should know.
+    </p>
+    <div class="form-group">
+        <label for="pitch">Enter your pitch below</label>
+        <textarea class = "form-control"  rows="4" name = "pitch"></textarea>
+    </div>
+    <button type="submit" name="button">Done</button>
+</form>
+<footer>
+    <% include ./partials/footer %>
+</footer>
+
+</body>
+</html>

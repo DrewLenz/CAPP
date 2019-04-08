@@ -39,4 +39,9 @@ module.exports = (app, passport) => {
     });
 
     //other routes..
+    app.get(`/createApplicant`, async(req, res) => {
+        res.render(`createApplicant.ejs`, {message: ``});
+    });
+
+    // TODO: Create app.post for creating profile
 };
