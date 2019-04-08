@@ -2,6 +2,8 @@
 // import User from "../sequelize";
 import { applicant_contact_info } from "../sequelize";
 import {applicant_skills} from "../sequelize";
+import {applicant_school_info} from "../sequelize";
+import {applicant_pitch} from "../sequelize";
 import { Model } from "mongoose";
 export default class UserService {
 
@@ -9,9 +11,8 @@ export default class UserService {
         return User.findOne({ email });
     }
 
-    findByContactInfo(){
+    findAllContactInfo(){
         return new Promise( (resolve, reject) => {
-            console.log('got here');
             applicant_contact_info.findAll() 
             .then(data => {
                 if(data) {
@@ -24,9 +25,50 @@ export default class UserService {
         // return applicant_contact_info.findAll();
     }
 
+    findSkillFromID(desired_id) {
+        return new Promise( (resolve, reject) => {
+            applicant_skills.findOne({ where: 
+                {uid: desired_id} })
+            .then(data => {
+                if(data) {
+                    resolve(data);
+                }
+
+                reject('nothingfound');
+            });
+        })
+    }
+
+    findSchoolInfoFromID(desired_id) {
+        return new Promise( (resolve, reject) => {
+            applicant_school_info.findOne({ where: 
+                {uid: desired_id} })
+            .then(data => {
+                if(data) {
+                    resolve(data);
+                }
+
+                reject('nothingfound');
+            });
+        })
+    }
+
+    findPitchFromID(desired_id) {
+        return new Promise( (resolve, reject) => {
+            applicant_pitch.findOne({ where: 
+                {uid: desired_id} })
+            .then(data => {
+                if(data) {
+                    resolve(data);
+                }
+
+                reject('nothingfound');
+            });
+        })
+    }
+
     findBySkill(){
         return new Promise( (resolve, reject) => {
-            console.log('got here');
             applicant_skills.findAll()
             .then(item => {
                 if(item) {

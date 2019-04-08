@@ -6,19 +6,23 @@ module.exports = (app, passport) => {
     app.get('/test', async(req, res) =>  {
          try { 
                 const users = new UserService();
-                const data = await users.findByContactInfo();
-                console.log(data);
-                console.log(data[0].first_name);
-              //  res.send(data);
-           //   res.send(data[0].first_name)
-                res.render('test.ejs', { data: data });
+                const data = await users.findAllContactInfo();
+                const results = [];
+
+                // Get stuff by ID
+                for (const contactInfo of data) {
+                    const skills = await users.findSkillFromID(contactInfo.uid);
+                    const schoolInfo = await users.findSchoolInfoFromID(contactInfo.uid);
+                    const pitch = await users.findPitchFromID(contactInfo.uid); 
+                    results.push({contactInfo, skills, schoolInfo, pitch});
+                }
+
+                res.render('test.ejs', { data: data, userStuff: results });
          }
          catch (err) {
              console.log(err)
              res.status(400).send(err);
          }
-
-
     });
 
 }

@@ -12,35 +12,23 @@
 </header>
 
 <main>
-   <ul>
-    <% console.log(data); %>
-    <div> <'first_name '>
-        <'last_name'>
-        <'email'>
-        <'phone_number'>
-        <'street_address_line1'>
-        <'street_address_line2'>
-        <'city'>
-        <'state'>
-        <'zipcode'></div>
-    <% data.forEach(function(item){ %>
-        <div>
-            <div>
-                <p><b>Name:</b> <%= item.first_name %> <%= item.last_name%>&#44;</p>
-            </div>
-        
-        
-        <%= item.email %>&#44;
-        <%= item.phone_number %>&#44;
-        <%= item.street_address_line1 %>&#44;
-        <%= item.street_address_line2 %>&#44;
-        <%= item.city %>&#44;
-        <%= item.state %>&#44;
-        <%= item.zipcode %>
-        </div>
+ <div>
+    <p>Grouped users test</p>
+    <% userStuff.forEach(function(user) { %>
+        <ul>
+            <p><b>Name: </b> <%= user.contactInfo.first_name %> <%= user.contactInfo.last_name %></p>
+            <p><b>Email: </b> <%= user.contactInfo.email %></p>
+            <p><b>Skill 1</b> <%= user.skills.top_skill1 %></p>
+            <p><b>Skill 2</b> <%= user.skills.top_skill2 %></p>
+            <p><b>Skill 3</b> <%= user.skills.top_skill3 %></p>
+            <p><b>Other</b> <%= user.skills.other_skills %></p>
+            <p><b>University</b> <%= user.schoolInfo.school_name %></p>
+            <p><b>Major</b> <%= user.schoolInfo.major%></p>
+            <p><b>Pitch</b> <%= user.pitch.pitch %></p>
+        </ul>
     <% }); %>
-   </ul>
- 
+ </div>
+
 </main>
 
 
