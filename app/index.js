@@ -8,7 +8,9 @@ import session from 'express-session'; // ^ all these imports are for parsing da
 //const MongoStore = connectMongo(session);
 import passport from 'passport'; // a simple, unobtrusive authentication library for authentication login
 import flash from 'connect-flash'; 
-import {ENV, PORT} from './config.js';
+//import sequelize from 'sequelize';
+import {NODE_ENV, PORT} from './config.js';
+
 
 //mongoose.connect(MONGO_URL, {useNewUrlParser: true});
 require(`./utils/passport`)(passport); // require passport to be used
@@ -55,7 +57,7 @@ app.use(function(req, res, next) {
 require(`./routes`)(app, passport);
 
 // Make server listen
-app.listen(PORT, () => console.log(`App listening on port ` + PORT + ` in ` + ENV + ` mode!`)); // eslint-disable-line
+app.listen(PORT, () => console.log(`App listening on port ` + PORT + ` in ` + NODE_ENV + ` mode!`)); // eslint-disable-line
 
 /* 
     Basically have to initialize static directory, Eric calls it "Public" or "Assets"
@@ -64,7 +66,10 @@ app.listen(PORT, () => console.log(`App listening on port ` + PORT + ` in ` + EN
             any javascript we're using for front end design (transitions, dropdown, etc.)
             CSS stylesheets
     Views would contain the "skeleton" of a page
-    At same level as app and views folders
+    At same level as a/pp and views folders
     This is all the EJS (so CSS and JS for front end)
     Backend will be protected somehow
 */
+//db connection
+
+

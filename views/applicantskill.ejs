@@ -1,0 +1,38 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./partials/header %>
+</header>
+
+<main>
+   <ul>
+    <% console.log(skill); %>
+    
+    <% skill.forEach(function(item){ %>
+        <div>
+        <%= item.top_skill1 %>&#44;
+        <%= item.top_skill2%>&#44;
+        <%= item.top_skill3 %>
+      
+        </div>
+    <% }); %>
+   </ul>
+ 
+</main>
+
+
+
+
+<footer>
+    <% include ./partials/footer %>
+</footer>
+
+</body>
+</html>
