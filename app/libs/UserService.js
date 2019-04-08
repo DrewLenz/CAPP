@@ -39,20 +39,6 @@ export default class UserService {
         // return applicant_contact_info.findAll();
     }
 
-    findBySkill(){
-        return new Promise( (resolve, reject) => {
-            console.log('got here');
-            applicant_skills.find()
-            .then(item => {
-                if(item) {
-                    resolve(item);
-                }
-
-                reject('nothingfound');
-            });
-        })
-        // return applicant_contact_info.findAll();
-    }
 
 
 
