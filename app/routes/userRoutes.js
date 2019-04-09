@@ -14,7 +14,7 @@ module.exports = (app, passport) => {
                     const skills = await users.findSkillFromID(contactInfo.uid);
                     const schoolInfo = await users.findSchoolInfoFromID(contactInfo.uid);
                     const pitch = await users.findPitchFromID(contactInfo.uid); 
-                    results.push({contactInfo, skills, schoolInfo, pitch});
+                    results.push({contactInfo, skills, schoolInfo, pitch, uid: contactInfo.uid});
                 }
 
                 res.render('test.ejs', { data: data, userStuff: results });
