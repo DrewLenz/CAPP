@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Tells to use embedded js as front end
 app.set(`view engine`, `ejs`);
+app.use(express.static(`${__dirname}/../public/`)); // allow us to link status CSS
 
 // Creates a session
 app.use(session({
