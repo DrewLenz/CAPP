@@ -18,27 +18,36 @@
                 <div class = "card-header" id=<%= user.uid %>>
                     <h5 class="mb-0">
                         <button class="btn btn-primary btn-block btn-light" data-toggle="collapse" data-target=<%= "#collapse" + user.uid %> aria-expanded="true" aria-controls=<%= "collapse" + user.uid %>>
-                            <div><b><%= user.contactInfo.first_name %> <%= user.contactInfo.last_name %></b></div>
-                            <div><i><%= user.schoolInfo.major %> - <%= user.schoolInfo.school_name %></i></div>
-                            <div><%= user.pitch.pitch %></div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col-6" style="text-align: left">
+                                            <div><b><%= user.contactInfo.first_name %> <%= user.contactInfo.last_name %></b></div>
+                                            <div><i><%= user.schoolInfo.major %> - <%= user.schoolInfo.school_name %></i></div>
+                                            <div><%= user.pitch.pitch %></div>
+                                            
+                                            <% if (user.skills.top_skill1 === "Java" || user.skills.top_skill1 === "Python" || user.skills.top_skill1 === "SQL") { %>
+                                                <span class="badge badge-danger"><%= user.skills.top_skill1 %></span>
+                                            <% } else { %>
+                                                <span class="badge badge-secondary"><%= user.skills.top_skill1 %></span>
+                                            <% } %>
+                                            
+                                            <% if (user.skills.top_skill2 === "Java" || user.skills.top_skill2 === "Python" || user.skills.top_skill2 === "SQL") { %>
+                                                <span class="badge badge-danger"><%= user.skills.top_skill2 %></span>
+                                            <% } else { %>
+                                                <span class="badge badge-secondary"><%= user.skills.top_skill2 %></span>
+                                            <% } %>
+                
+                                            <% if (user.skills.top_skill3 === "Java" || user.skills.top_skill3 === "Python" || user.skills.top_skill3 === "SQL") { %>
+                                                <span class="badge badge-danger"><%= user.skills.top_skill3 %></span>
+                                            <% } else { %>
+                                                <span class="badge badge-secondary"><%= user.skills.top_skill3 %></span>
+                                            <% } %>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
                             
-                            <% if (user.skills.top_skill1 === "Java" || user.skills.top_skill1 === "Python" || user.skills.top_skill1 === "SQL") { %>
-                                <span class="badge badge-danger"><%= user.skills.top_skill1 %></span>
-                            <% } else { %>
-                                <span class="badge badge-secondary"><%= user.skills.top_skill1 %></span>
-                            <% } %>
-                            
-                            <% if (user.skills.top_skill2 === "Java" || user.skills.top_skill2 === "Python" || user.skills.top_skill2 === "SQL") { %>
-                                <span class="badge badge-danger"><%= user.skills.top_skill2 %></span>
-                            <% } else { %>
-                                <span class="badge badge-secondary"><%= user.skills.top_skill2 %></span>
-                            <% } %>
-
-                            <% if (user.skills.top_skill3 === "Java" || user.skills.top_skill3 === "Python" || user.skills.top_skill3 === "SQL") { %>
-                                <span class="badge badge-danger"><%= user.skills.top_skill3 %></span>
-                            <% } else { %>
-                                <span class="badge badge-secondary"><%= user.skills.top_skill3 %></span>
-                            <% } %>
                         </button>
                     </h5>
                 </div>
