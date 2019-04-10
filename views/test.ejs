@@ -22,7 +22,9 @@
                                 <div class="col-9">
                                         <button class="btn btn-primary btn-block btn-light" data-toggle="collapse" data-target=<%= "#collapse" + user.uid %> aria-expanded="true" aria-controls=<%= "collapse" + user.uid %>>
                                             <div class="row">
-                                                <div class="col-3"></div>
+                                                <div class="col-3">
+                                                    <img src=<%= "/images/"+ user.uid + ".jpg" %> class="rounded img-thumbnail" alt="profile picture">
+                                                </div>
                                                 <div class="col-9" style="text-align: left">
                                                     <h3><%= user.contactInfo.first_name %> <%= user.contactInfo.last_name %></h3>
                                                     <div><i><%= user.schoolInfo.major %> - <%= user.schoolInfo.school_name %></i></div>
@@ -54,9 +56,9 @@
                                     <button class="btn btn-primary btn-block btn-light" style="height: 45%">
                                         <i class="material-icons" style="font-size: 56px">star_border</i>
                                     </button>
-                                    <button class="btn btn-primary btn-block btn-light" style="height: 45%">
+                                    <a class="btn btn-primary btn-block btn-light" href=<%= "mailto:"+user.contactInfo.email %> role = "button" style="height: 45%">
                                         <i class="material-icons" style="font-size: 56px">mail_outline</i>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +66,40 @@
                 </h5>
                 <div id=<%= "collapse" + user.uid %> class="collapse" aria-labelledby=<%= user.uid %> data-parent="#accordion">
                         <div class="card-body">
-                            User Email: <%= user.contactInfo.email %>
+                            <div class="card">
+                                <div class="card-header">Education Info</div>
+                                <div class="card-body">
+                                        <p><%= user.schoolInfo.school_name %></p>
+                                        <p><%= user.schoolInfo.school_city %>, <%= user.schoolInfo.school_state %></p>
+                                        <p><b>Major: </b> <%= user.schoolInfo.major %></p>
+                                        <% if (user.schoolInfo.minor) { %>
+                                            <p><b>Minor: </b> <%= user.schoolInfo.minor %></p>
+                                        <%} %>
+                                        <p><b>GPA: </b>
+                                            <% if (user.schoolInfo.gpa % 1 == 0) { %>
+                                                <%= user.schoolInfo.gpa %>.0
+                                            <% } else { %>
+                                                <%= user.schoolInfo.gpa %>
+                                            <% } %>
+                                             / 
+                                            <% if (user.schoolInfo.gpa_scale % 1 == 0) { %>
+                                                <%= user.schoolInfo.gpa_scale %>.0
+                                            <% } else { %>
+                                                <%= user.schoolInfo.gpa_scale %>
+                                            <% } %>
+                                        </p>                                        
+                                        <p>Graduating <%= user.schoolInfo.grad_semester %> <%= user.schoolInfo.grad_year %></p>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">Skills</div>
+                                <div class="card-body">
+                                    <p><b>Top Skills: </b> <%= user.skills.top_skill1 %>, <%= user.skills.top_skill2 %>, <%= user.skills.top_skill3 %></p>
+                                    <p><b>Other Skills: </b> <%= user.skills.other_skills %> </p>
+                                </div>
+                            </div>
+                            
                         </div>
                 </div>
             </div>
