@@ -16,8 +16,8 @@ module.exports = (app, passport) => {
                     const pitch = await users.findPitchFromID(contactInfo.uid); 
                     results.push({contactInfo, skills, schoolInfo, pitch, uid: contactInfo.uid});
                 }
-
-                res.render('applicantFeed.ejs', { userStuff: results });
+                
+                res.render('applicantFeed.ejs', { userStuff: results, bestFit: false });
          }
          catch (err) {
              console.log(err)
@@ -75,7 +75,7 @@ module.exports = (app, passport) => {
                 results.push({contactInfo, skills, schoolInfo, pitch, uid: d.key});
             }
 
-            res.render('applicantFeed.ejs', {userStuff: results});
+            res.render('applicantFeed.ejs', {userStuff: results, bestFit: true});
         }
         catch (err) {
             console.log(err);

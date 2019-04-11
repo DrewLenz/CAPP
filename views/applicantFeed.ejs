@@ -12,15 +12,29 @@
     </header>
 <main class="container">
 <div class="container" style="padding-bottom: 15px">
-    <a class="btn btn-primary btn-danger" href="/applicants" role = "button">
-        All Applicants
-    </a>
-
-    <a class="btn btn-primary btn-danger" href="/applicants-bestFit" role = "button">
-        Best Fit
-    </a>    
+    <div class="card">
+        <div class="card-header bg-dark text-center">
+            <% if (bestFit) { %>
+                <a class="btn btn-primary btn-outline-light" href="/applicants" role = "button" style="margin-right: 5%">
+                    All Applicants
+                </a>
+            
+                <a class="btn btn-primary btn-danger" href="/applicants-bestFit" role = "button" style="margin-left: 5%">
+                    Best Fit
+                </a>
+            <% } else { %>
+                <a class="btn btn-primary btn-danger" href="/applicants" role = "button" style="margin-right: 5%">
+                    All Applicants
+                </a>
+            
+                <a class="btn btn-primary btn-outline-light" href="/applicants-bestFit" role = "button" style="margin-left: 5%">
+                    Best Fit
+                </a>
+            <% } %>
+        </div>
+    </div>
+        
 </div>
-
 
 <% if(userStuff.length > 0) { %>
     <div>
