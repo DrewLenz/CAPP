@@ -4,6 +4,7 @@ import { applicant_contact_info } from "../sequelize";
 import {applicant_skills} from "../sequelize";
 import {applicant_school_info} from "../sequelize";
 import {applicant_pitch} from "../sequelize";
+import {skill_map} from "../sequelize";
 import { Model } from "mongoose";
 export default class UserService {
 
@@ -22,7 +23,40 @@ export default class UserService {
                 reject('nothingfound');
             });
         })
-        // return applicant_contact_info.findAll();
+    }
+
+    findBestFit(topSkill1, topSkill2, topSkill3) {
+        return new Promise( (resolve, reject) => {
+            skill_map.findAll(
+                {
+                    where: {
+                        $or: [{skill: {$eq: topSkill1}},
+                            {skill: {$eq: topSkill2}},
+                            {skill: {$eq: topSkill3}}]
+                    }
+                }
+            )
+            .then(data => {
+                if(data) {
+                    resolve(data);
+                }
+                reject('nothingfound');
+            });
+        })
+    }
+
+    findContactInfoFromID(desired_id) {
+        return new Promise( (resolve, reject) => {
+            applicant_contact_info.findOne({ where: 
+                {uid: desired_id} })
+            .then(data => {
+                if(data) {
+                    resolve(data);
+                }
+
+                reject('nothingfound');
+            });
+        })
     }
 
     findSkillFromID(desired_id) {

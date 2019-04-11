@@ -11,15 +11,27 @@
         <% include ./partials/header %>
     </header>
 <main class="container">
-<div>
-    <div id="accordion">
-        <% userStuff.forEach(function(user) { %>
-            <div class="card">
-                <div class = "card-header" id=<%= user.uid %>>
-                    <h5 class="mb-0">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-9">
+<div class="container" style="padding-bottom: 15px">
+    <a class="btn btn-primary btn-danger" href="/applicants" role = "button">
+        All Applicants
+    </a>
+
+    <a class="btn btn-primary btn-danger" href="/applicants-bestFit" role = "button">
+        Best Fit
+    </a>    
+</div>
+
+
+<% if(userStuff.length > 0) { %>
+    <div>
+        <div id="accordion">
+            <% userStuff.forEach(function(user) { %>
+                <div class="card">
+                    <div class = "card-header" id=<%= user.uid %>>
+                        <h5 class="mb-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-9">
                                         <button class="btn btn-primary btn-block btn-light" data-toggle="collapse" data-target=<%= "#collapse" + user.uid %> aria-expanded="true" aria-controls=<%= "collapse" + user.uid %>>
                                             <div class="row">
                                                 <div class="col-3">
@@ -35,13 +47,13 @@
                                                         <% } else { %>
                                                             <span class="badge badge-secondary"><%= user.skills.top_skill1 %></span>
                                                         <% } %>
-
+    
                                                         <% if (user.skills.top_skill2 === "Java" || user.skills.top_skill2 === "Python" || user.skills.top_skill2 === "SQL") { %>
                                                             <span class="badge badge-danger"><%= user.skills.top_skill2 %></span>
                                                         <% } else { %>
                                                             <span class="badge badge-secondary"><%= user.skills.top_skill2 %></span>
                                                         <% } %>
-
+    
                                                         <% if (user.skills.top_skill3 === "Java" || user.skills.top_skill3 === "Python" || user.skills.top_skill3 === "SQL") { %>
                                                             <span class="badge badge-danger"><%= user.skills.top_skill3 %></span>
                                                         <% } else { %>
@@ -49,63 +61,67 @@
                                                         <% } %>
                                                     </h4>
                                                 </div>
-                                              </div>
+                                            </div>
                                         </button>
-                                </div>
-                                <div class="col-3">
-                                    <button class="btn btn-primary btn-block btn-light" style="height: 45%">
-                                        <i class="material-icons" style="font-size: 56px">star_border</i>
-                                    </button>
-                                    <a class="btn btn-primary btn-block btn-light" href=<%= "mailto:"+user.contactInfo.email %> role = "button" style="height: 45%">
-                                        <i class="material-icons" style="font-size: 56px">mail_outline</i>
-                                    </a>
+                                    </div>
+                                    <div class="col-3">
+                                        <button class="btn btn-primary btn-block btn-light" style="height: 45%">
+                                            <i class="material-icons" style="font-size: 56px">star_border</i>
+                                        </button>
+                                        <a class="btn btn-primary btn-block btn-light" href=<%= "mailto:"+user.contactInfo.email %> role = "button" style="height: 45%">
+                                            <i class="material-icons" style="font-size: 56px">mail_outline</i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </h5>
+                    <div id=<%= "collapse" + user.uid %> class="collapse" aria-labelledby=<%= user.uid %> data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="card-header">Education Info</div>
+                                    <div class="card-body">
+                                            <p><%= user.schoolInfo.school_name %></p>
+                                            <p><%= user.schoolInfo.school_city %>, <%= user.schoolInfo.school_state %></p>
+                                            <p><b>Major: </b> <%= user.schoolInfo.major %></p>
+                                            <% if (user.schoolInfo.minor) { %>
+                                                <p><b>Minor: </b> <%= user.schoolInfo.minor %></p>
+                                            <%} %>
+                                            <p><b>GPA: </b>
+                                                <% if (user.schoolInfo.gpa % 1 == 0) { %>
+                                                    <%= user.schoolInfo.gpa %>.0
+                                                <% } else { %>
+                                                    <%= user.schoolInfo.gpa %>
+                                                <% } %>
+                                                    / 
+                                                <% if (user.schoolInfo.gpa_scale % 1 == 0) { %>
+                                                    <%= user.schoolInfo.gpa_scale %>.0
+                                                <% } else { %>
+                                                    <%= user.schoolInfo.gpa_scale %>
+                                                <% } %>
+                                            </p>                                        
+                                            <p>Graduating <%= user.schoolInfo.grad_semester %> <%= user.schoolInfo.grad_year %></p>
+                                    </div>
+                                </div>
+    
+                                <div class="card">
+                                    <div class="card-header">Skills</div>
+                                    <div class="card-body">
+                                        <p><b>Top Skills: </b> <%= user.skills.top_skill1 %>, <%= user.skills.top_skill2 %>, <%= user.skills.top_skill3 %></p>
+                                        <p><b>Other Skills: </b> <%= user.skills.other_skills %> </p>
+                                    </div>
+                                </div>
+                                
+                            </div>
                     </div>
-                </h5>
-                <div id=<%= "collapse" + user.uid %> class="collapse" aria-labelledby=<%= user.uid %> data-parent="#accordion">
-                        <div class="card-body">
-                            <div class="card">
-                                <div class="card-header">Education Info</div>
-                                <div class="card-body">
-                                        <p><%= user.schoolInfo.school_name %></p>
-                                        <p><%= user.schoolInfo.school_city %>, <%= user.schoolInfo.school_state %></p>
-                                        <p><b>Major: </b> <%= user.schoolInfo.major %></p>
-                                        <% if (user.schoolInfo.minor) { %>
-                                            <p><b>Minor: </b> <%= user.schoolInfo.minor %></p>
-                                        <%} %>
-                                        <p><b>GPA: </b>
-                                            <% if (user.schoolInfo.gpa % 1 == 0) { %>
-                                                <%= user.schoolInfo.gpa %>.0
-                                            <% } else { %>
-                                                <%= user.schoolInfo.gpa %>
-                                            <% } %>
-                                             / 
-                                            <% if (user.schoolInfo.gpa_scale % 1 == 0) { %>
-                                                <%= user.schoolInfo.gpa_scale %>.0
-                                            <% } else { %>
-                                                <%= user.schoolInfo.gpa_scale %>
-                                            <% } %>
-                                        </p>                                        
-                                        <p>Graduating <%= user.schoolInfo.grad_semester %> <%= user.schoolInfo.grad_year %></p>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header">Skills</div>
-                                <div class="card-body">
-                                    <p><b>Top Skills: </b> <%= user.skills.top_skill1 %>, <%= user.skills.top_skill2 %>, <%= user.skills.top_skill3 %></p>
-                                    <p><b>Other Skills: </b> <%= user.skills.other_skills %> </p>
-                                </div>
-                            </div>
-                            
-                        </div>
                 </div>
-            </div>
-        <% }); %>
+            <% }); %>
+        </div>
     </div>
-</div>
+<% } else { %>
+    <p>No results found!</p>
+<% } %>
+
 
 </main>
 
