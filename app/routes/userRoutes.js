@@ -17,7 +17,7 @@ module.exports = (app, passport) => {
                     results.push({contactInfo, skills, schoolInfo, pitch, uid: contactInfo.uid});
                 }
 
-                res.render('test.ejs', { userStuff: results });
+                res.render('applicantFeed.ejs', { userStuff: results });
          }
          catch (err) {
              console.log(err)
@@ -75,7 +75,7 @@ module.exports = (app, passport) => {
                 results.push({contactInfo, skills, schoolInfo, pitch, uid: d.key});
             }
 
-            res.render('test.ejs', {userStuff: results});
+            res.render('applicantFeed.ejs', {userStuff: results});
         }
         catch (err) {
             console.log(err);
