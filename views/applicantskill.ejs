@@ -13,14 +13,13 @@
 
 <main>
    <ul>
-    <% console.log(skill); %>
+    <% console.log(post); %>
     
-    <% skill.forEach(function(item){ %>
+    <% post.forEach(function(item){ %>
         <div>
-        <%= item.uid %>&#44;
-        <%= item.top_skill1 %>&#44;
-        <%= item.top_skill2%>&#44;
-        <%= item.top_skill3 %>
+       
+        <%= item.position %>
+        <%= item.company %>
       
         </div>
     <% }); %>

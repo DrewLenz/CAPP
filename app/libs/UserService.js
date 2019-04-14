@@ -5,7 +5,8 @@ import {applicant_skills} from "../sequelize";
 import {applicant_school_info} from "../sequelize";
 import {applicant_pitch} from "../sequelize";
 import {skill_map} from "../sequelize";
-import { Model } from "mongoose";
+import {job_listing} from "../sequelize"
+//import { Model } from "mongoose";
 export default class UserService {
 
     findByEmail(email) {
@@ -115,16 +116,69 @@ export default class UserService {
         // return applicant_contact_info.findAll();
     }
 
+    findAllPosition(){
+        return new Promise( (resolve, reject) => {
+            job_listing.findAll()
+            .then(data => {
+                if(data) {
+                    resolve(data);
+                }
 
+                reject('nothingfound');
+            });
+        })
+        // return applicant_contact_info.findAll();
+    }
 
+    findPositionFromID(desired_id) {
+        return new Promise( (resolve, reject) => {
+            job_listing.findOne({ where: 
+                {jid: desired_id} })
+            .then(data => {
+                if(data) {
+                    resolve(data);
+                }
 
+                reject('nothingfound');
+            });
+        })
+    }
 
+    findCompanyFromID(desired_id) {
+        return new Promise( (resolve, reject) => {
+            job_listing.findOne({ where: 
+                {jid: desired_id} })
+            .then(data => {
+                if(data) {
+                    resolve(data);
+                }
 
+                reject('nothingfound');
+            });
+        })
+    }
 
-
-
-
-
+    findCompanyFit(company1, company2, company3, company4, company5) {
+        return new Promise( (resolve, reject) => {
+            job_listing.findAll(
+                {
+                    where: {
+                        $or: [{company: {$eq: company1}},
+                            {company: {$eq: company2}},
+                            {company: {$eq: company3}},
+                            {company: {$eq: company4}},
+                            {company: {$eq: company5}} ]
+                    }
+                }
+            )
+            .then(data => {
+                if(data) {
+                    resolve(data);
+                }
+                reject('nothingfound');
+            });
+        })
+    }
 
     createUser(email, password) {
         let newUser = new User();

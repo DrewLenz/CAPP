@@ -10,3 +10,7 @@
 \.vs/slnx\.sqlite
 
 \.vs/VSWorkspaceState\.json
+
+\.vscode/ipch/28dfce9f97980d17/mmap_address\.bin
+
+\.vscode/ipch/9ef1067f0ca5c44e/mmap_address\.bin
