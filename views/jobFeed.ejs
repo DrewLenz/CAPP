@@ -19,7 +19,7 @@
                                 All Positions
                             </a>
                         
-                            <a class="btn btn-primary btn-danger" href="/jobFeedByCompany" role = "button" style="margin-left: 5%">
+                            <a class="btn btn-primary btn-danger" href="/jobFeedByCompany" role = "button" style="margin-left: 5%; margin-right: 5%">
                                 By Company
                             </a>
 
@@ -31,7 +31,7 @@
                                 All Positions
                             </a>
                         
-                            <a class="btn btn-primary btn-outline-light" href="/jobFeedByCompany" role = "button" style="margin-left: 5%">
+                            <a class="btn btn-primary btn-outline-light" href="/jobFeedByCompany" role = "button" style="margin-left: 5%; margin-right: 5%">
                                 By Company
                             </a>
 
@@ -43,7 +43,7 @@
                                 All Positions
                             </a>
                         
-                            <a class="btn btn-primary btn-outline-light" href="/jobFeedByCompany" role = "button" style="margin-left: 5%">
+                            <a class="btn btn-primary btn-outline-light" href="/jobFeedByCompany" role = "button" style="margin-left: 5%; margin-right: 5%">
                                 By Company
                             </a>
 
@@ -67,12 +67,32 @@
                                     <div class="col-9">
                                         <button class="btn btn-primary btn-block btn-light" data-toggle="collapse" data-target=<%= "#collapse" + user.jid %> aria-expanded="true" aria-controls=<%= "collapse" + user.jid %>>
                                             <div class="row">
-                                            
+                                                <div class="col-3">
+                                                    <img src=<%= "/images/"+ user.positionInfo.company + ".jpg" %> class="rounded img-thumbnail" alt="company logo">
+                                                </div>
                                                 <div class="col-9" style="text-align: left">
-                                                    <h3><%= user.positionInfo.position %> <%= user.positionInfo.company %></h3>
-                                                    
-                                                
-                                        
+                                                    <h3><%= user.positionInfo.position %></h3>
+                                                    <div><i><%= user.requirements.major %> Co-Op with <%= user.positionInfo.company%></i></div>
+                                                    <div style="white-space: pre-line"><p><%= user.requirements.pitch %></p></div>                                        
+                                                    <h4>
+                                                        <% if (user.requirements.top_skill1 === "Java" || user.requirements.top_skill1 === "Python" || user.requirements.top_skill1 === "SQL") { %>
+                                                            <span class="badge badge-danger"><%= user.requirements.top_skill1 %></span>
+                                                        <% } else { %>
+                                                            <span class="badge badge-secondary"><%= user.requirements.top_skill1 %></span>
+                                                        <% } %>
+    
+                                                        <% if (user.requirements.top_skill2 === "Java" || user.requirements.top_skill2 === "Python" || user.requirements.top_skill2 === "SQL") { %>
+                                                            <span class="badge badge-danger"><%= user.requirements.top_skill2 %></span>
+                                                        <% } else { %>
+                                                            <span class="badge badge-secondary"><%= user.requirements.top_skill2 %></span>
+                                                        <% } %>
+    
+                                                        <% if (user.requirements.top_skill3 === "Java" || user.requirements.top_skill3 === "Python" || user.requirements.top_skill3 === "SQL") { %>
+                                                            <span class="badge badge-danger"><%= user.requirements.top_skill3 %></span>
+                                                        <% } else { %>
+                                                            <span class="badge badge-secondary"><%= user.requirements.top_skill3 %></span>
+                                                        <% } %>
+                                                    </h4>
                                                 </div>
                                             </div>
                                         </button>
@@ -81,7 +101,10 @@
                                             <button class="btn btn-primary btn-block btn-light" style="height: 45%">
                                                 <i class="material-icons" style="font-size: 56px">star_border</i>
                                             </button>
-                                           
+                                            
+                                            <button class="btn btn-primary btn-block btn-light" style="height: 45%">
+                                                <i class="material-icons" style="font-size: 56px">check</i>
+                                            </button>
                                         </div>
                                 </div>
                             
