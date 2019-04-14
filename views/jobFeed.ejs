@@ -22,6 +22,22 @@
                             <a class="btn btn-primary btn-danger" href="/jobFeedByCompany" role = "button" style="margin-left: 5%">
                                 By Company
                             </a>
+
+                            <a class="btn btn-primary btn-outline-light" href="/jobFeedByMajor" role = "button" style = "margin-left: 5%">
+                                By Major
+                            </a>
+                        <% } else if(ByMajor) { %>
+                            <a class="btn btn-primary btn-outline-light" href="/jobFeed" role = "button" style="margin-right: 5%">
+                                All Positions
+                            </a>
+                        
+                            <a class="btn btn-primary btn-outline-light" href="/jobFeedByCompany" role = "button" style="margin-left: 5%">
+                                By Company
+                            </a>
+
+                            <a class="btn btn-primary btn-danger" href="/jobFeedByMajor" role = "button" style = "margin-left: 5%">
+                                By Major
+                            </a>
                         <% } else { %>
                             <a class="btn btn-primary btn-danger" href="/jobFeed" role = "button" style="margin-right: 5%">
                                 All Positions
@@ -29,6 +45,10 @@
                         
                             <a class="btn btn-primary btn-outline-light" href="/jobFeedByCompany" role = "button" style="margin-left: 5%">
                                 By Company
+                            </a>
+
+                            <a class="btn btn-primary btn-outline-light" href="/jobFeedByMajor" role = "button" style = "margin-left: 5%">
+                                By Major
                             </a>
                         <% } %>
                     </div>

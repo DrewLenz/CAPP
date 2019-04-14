@@ -6,6 +6,8 @@ import {applicant_school_info} from "../sequelize";
 import {applicant_pitch} from "../sequelize";
 import {skill_map} from "../sequelize";
 import {job_listing} from "../sequelize"
+import {job_requirements} from "../sequelize";
+
 //import { Model } from "mongoose";
 export default class UserService {
 
@@ -177,6 +179,30 @@ export default class UserService {
                 }
                 reject('nothingfound');
             });
+        })
+    }
+
+    findJobsFromMajor(desiredMajor) {
+        return new Promise( (resolve, reject) => {
+            job_requirements.findAll({where: {major: desiredMajor}})
+            .then(data=> {
+                if(data) {
+                    resolve(data);
+                }
+                reject('nothingfound');
+            })
+        })
+    }
+
+    findRequirementsFromID(_jid) {
+        return new Promise( (resolve, reject) => {
+            job_requirements.findOne({where: {jid: _jid}})
+            .then(data => {
+                if (data) {
+                    resolve(data);
+                }
+                reject('nothingfound');
+            })
         })
     }
 

@@ -6,6 +6,7 @@ import applicant_school_infoModel from "./models/applicant_school_info.js";
 import employer_infoModel from "./models/employer_info.js";
 import job_listing_Model from "./models/job_listing.js";
 import skill_mapModel from "./models/skill_map.js";
+import job_requirementsModel from "./models/job_requirements.js";
 
 import {
     SEQ_HOST,
@@ -48,9 +49,7 @@ export const applicant_school_info = applicant_school_infoModel(sequelize, Seque
 export const employer_info = employer_infoModel(sequelize, Sequelize);
 export const job_listing = job_listing_Model(sequelize, Sequelize);
 export const skill_map = skill_mapModel(sequelize, Sequelize);
-
-
-
+export const job_requirements = job_requirementsModel(sequelize, Sequelize);
 
 
 sequelize

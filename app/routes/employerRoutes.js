@@ -9,13 +9,13 @@ module.exports = (app, passport) => {
                 const data = await users.findAllPosition();
                 var results = [];
                for( const positionInfo of data) {
-                   const position = await users.findPositionFromID(positionInfo.jid);
                    const company = await users.findCompanyFromID(positionInfo.jid);
-                   results.push({positionInfo, position, company, jid: positionInfo.jid});
+                   const requirements = await users.findRequirementsFromID(positionInfo.jid);
+                   results.push({positionInfo, company, requirements, jid: positionInfo.jid});
                }
                 
        
-                res.render('jobFeed.ejs', {userStuff: results, ByCompany:false });
+                res.render('jobFeed.ejs', {userStuff: results, ByCompany:false, ByMajor: false });
          }
          catch (err) {
              console.log(err)
@@ -36,15 +36,15 @@ module.exports = (app, passport) => {
             jidMap.set('zzz', 12);
             jidMap.set('jjj', 11);
             jidMap.set('aaa', 7);
-            jidMap.set('ddd', 9);
-            jidMap.set('eee', 8);
+            //jidMap.set('ddd', 9);
+            //jidMap.set('eee', 8);
             jidMap.set('bbb', 10);
             jidMap.set('ccc', 6);
             jidMap.set('hhh', 3);
-            jidMap.set('iii', 4);
-            jidMap.set('mmm', 5);
+            //jidMap.set('iii', 4);
+            //jidMap.set('mmm', 5);
             jidMap.set('fff', 2);
-            jidMap.set('ggg', 1); 
+            //jidMap.set('ggg', 1); 
             
         
             var mapEntries = [];
@@ -68,12 +68,12 @@ module.exports = (app, passport) => {
             for (const d of mapEntries) {
                 const positionInfo = await users.findPositionFromID(d.key);
                 const company = await users.findCompanyFromID(d.key);
-                
-                results.push({positionInfo, company, jid: d.key});
+                const requirements = await users.findRequirementsFromID(d.key);
+                results.push({positionInfo, company, requirements, jid: d.key});
             }
 
       
-               res.render('jobFeed.ejs', {userStuff: results, ByCompany:true  });
+               res.render('jobFeed.ejs', {userStuff: results, ByCompany:true, ByMajor: false  });
         }
         catch (err) {
             console.log(err)
@@ -83,6 +83,26 @@ module.exports = (app, passport) => {
 
    });
  
+   app.get('/jobFeedByMajor', async(req, res) => {
+       try {
+           const jobs = new UserService();
+           const data = await jobs.findJobsFromMajor('Computer Engineering');
+            var results = [];
+
+            for (const job of data) {
+                const requirements = job;
+                const positionInfo = await jobs.findPositionFromID(job.jid);
+                const company = await jobs.findCompanyFromID(job.jid);
+
+                results.push({positionInfo, company, requirements, jid: job.jid});
+            }
+            res.render('jobFeed.ejs', {userStuff: results, ByCompany: false, ByMajor: true });
+       }
+       catch(err) {
+           console.log(err);
+           res.status(400).send(err);
+       }
+   });
   
  
 }
