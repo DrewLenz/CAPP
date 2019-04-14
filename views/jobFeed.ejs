@@ -113,11 +113,25 @@
                         <div id=<%= "collapse" + user.jid %> class="collapse" aria-labelledby=<%= user.jid %> data-parent="#accordion">
                             <div class="card-body">
                                 <div class="card">
-                                    <div class="card-header">Position Info</div>
+                                    <div class="card-header">Additional Requirements</div>
                                     <div class="card-body">
-                                            <p> Job Position Information Blurb here </p>
+                                            <% if (user.requirements.gpa) { %>
+                                                <% if (user.requirements.gpa % 1 == 0) { %>
+                                                    <p><b>Min. GPA: </b><%= user.requirements.gpa %>.0</p>
+                                                <% } else { %>
+                                                    <p><b>Min. GPA: </b><%= user.requirements.gpa %></p>
+                                                <% } %>
+                                            <% } %>
+                                            <p><b>Other Skills: </b> <%= user.requirements.other_skills %></p>
                                     </div>
                                 </div>
+                            <div class="card">
+                                <div class="card-header">Location</div>
+                                <div class="card-body">
+                                    <p><%= user.requirements.location %></p>
+                                </div>
+
+                            </div>
                     </h5>
                             </div>
                     </div>

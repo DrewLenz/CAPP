@@ -10,7 +10,10 @@ module.exports = (sequelize, type) => {
             top_skill2: type.STRING,
             top_skill3: type.STRING,
             major: type.STRING,
-            pitch: type.STRING
+            pitch: type.STRING,
+            gpa: type.FLOAT,
+            other_skills: type.STRING,
+            location: type.STRING
         }, {
             timestamps: false,
         }
